@@ -1,0 +1,21 @@
+<Report-Configuration name="demoReport">
+  <mailFrom>mailFrom</mailFrom>
+  <title>My Report</title>
+  <Table-Sheet id="demoTable" parser="tableParser" tempSheet="customerTemplate" startRow="19" startColumn="A" vertical="false" showColumnLabel="false">
+    <title>Table 1</title>
+    <Parameter name="startTime" type="date">
+      <default-value>2012-07-01</default-value>
+    </Parameter>
+    <Parameter name="endTime" type="date">
+      <default-value>2012-09-01</default-value>
+    </Parameter>
+    <column-list>
+      <Column name="col" label="Sequence" type="sequence" parser="colParser"/>
+      <Column name="col1" label="字段" type="String" parser="colParser"/>
+      <Column name="col2" label="Column 2" type="String" parser="colParser"/>
+      <Column name="col3" label="Column 3" type="String" parser="colParser" hidden="true"/>
+    </column-list>
+  </Table-Sheet>
+  <template><![CDATA[billreport.xlsx]]></template>
+  <attachment>attachement.file</attachment>
+</Report-Configuration>
