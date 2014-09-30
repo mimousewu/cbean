@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<binDesc>
+	<!-- every parser must implements Parser Interface -->
+	<structure id="start" class="com.shjv.tdscdma.omc.simulator.server.ne.nodeb.mit.NodeBMit">
+		<property name="typeOfFile" type="byte" len="1"/>
+
+		<property name="dataLength" type="Uint" len="4"/>
+
+		<property name="moList" type="moDataList" len="@end"/>
+	</structure>
+
+	<structure id="moDataList" class="java.util.ArrayList" collection="collection">
+		<property name="subLength" type="INT" len="2" ignore="true">
+			<value>@size</value>
+		</property>
+		<property name="value" type="moData" len="$subLength"/>
+
+	</structure>
+
+	<structure id="moData" class="com.shjv.tdscdma.omc.simulator.server.ne.nodeb.mit.MoData">
+
+		<property name="mocCode" type="INT" len="1"/>
+
+		<property name="instanceCodes" type="bytes" len="3"/>
+
+		<property name="attributeDataList" type="attributeList" len="$moDataList.subLength-5"/>
+
+		<property name="LeafFlag" type="INT" len="1" ignore="true">
+			<value>00</value>
+		</property>
+
+	</structure>
+
+	<structure id="attributeList" class="java.util.ArrayList" collection="collection">
+		<property name="value" type="attributeData"/>
+	</structure>
+
+    <structure id="attributeData" class="com.shjv.tdscdma.omc.simulator.server.ne.nodeb.mit.AttributeData">
+		<property name="code" type="INT" len="2"/>
+
+		<property name="length" type="Uint" len="1" ignore="true">
+			<value>@size</value>
+		</property>
+
+		<property name="value" type="bytes" len="$length"/>
+	</structure>
+</binDesc>

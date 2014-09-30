@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Mapping DTD Version 1.0//EN"
+                           "http://www.castor.org/mapping.dtd">
+<mapping>
+	<class name="net.cbean.binary.BinMapping">
+		<map-to xml="binDesc"/>
+		<field name="structureList" type="net.cbean.binary.Structure" collection="collection" required="true">
+			<bind-xml name="structure" node="element"/>
+		</field>
+	</class>
+	
+	<class name="net.cbean.binary.Structure">
+		<map-to xml="structure"/>
+		<field name="id" type="java.lang.String">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<field name="clazz" type="java.lang.String">
+			<bind-xml name="class" node="attribute"/>
+		</field>
+		<field name="collection" type="java.lang.String">
+			<bind-xml name="collection" node="attribute"/>
+		</field>
+		<field name="properties" type="net.cbean.binary.Property" collection="collection">
+			<bind-xml name="property" node="element"/>
+		</field>
+	</class>
+	
+	<class name="net.cbean.binary.Property">
+		<map-to xml="property"/>
+		<field name="name" type="java.lang.String">
+			<bind-xml name="name" node="attribute"/>
+		</field>
+		<field name="type" type="java.lang.String">
+			<bind-xml name="type" node="attribute"/>
+		</field>
+		<field name="length" type="java.lang.String">
+			<bind-xml name="len" node="attribute"/>
+		</field>
+		<field name="ignore" type="java.lang.Boolean">
+			<bind-xml name="ignore" node="attribute"/>
+		</field>
+		<field name="value" type="java.lang.String">
+			<bind-xml name="value" node="element"/>
+		</field>
+	</class>
+</mapping>

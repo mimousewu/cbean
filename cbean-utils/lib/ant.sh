@@ -1,0 +1,1 @@
+java -cp ".;cbean-utils-1.1-SNAPSHOT.jar;ant-1.8.1.jar;ant-launcher-1.8.1.jar;commons-logging-1.1.1.jar" net.cbean.ant.AntCommandRunner
