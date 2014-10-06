@@ -30,11 +30,11 @@ public class TestCommand extends BaseCommand implements CmdDescriptor {
 	@Override
 	public int execute(BufferedReader in, PrintStream out) {
 		System.out.println("run test, args:" + getArgLine());
-		String arg = getInput("next arg: ");
-		String arg1 = getInput("3rd arg: ");
-		
-		out.println(arg);
-		out.println(arg1);
+//		String arg = getInput("next arg: ");
+//		String arg1 = getInput("3rd arg: ");
+//		
+//		out.println(arg);
+//		out.println(arg1);
 //		this.session.putAttribute(Command.NEXT_CMD, "test1");
 		return 0;
 	}

@@ -16,7 +16,9 @@ package net.cbean.cmd;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -122,9 +124,16 @@ public class Dispatcher {
 		return true;
 	}
 
-	public Command getInitCommand() {
+	public List<Command> getInitCommand() {
 		if (initCmd != null) {
-			return getCommand(initCmd);
+			List<Command> initCommands = new ArrayList<Command>();
+			for(String cmd : initCmd.split(",")){
+				Command command = getCommand(cmd.trim());
+				if(command !=null){
+					initCommands.add(command);
+				}
+			}
+			return initCommands;
 		} else {
 			return null;
 		}

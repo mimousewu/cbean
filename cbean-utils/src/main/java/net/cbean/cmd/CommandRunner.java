@@ -57,10 +57,13 @@ public class CommandRunner {
 		}
 
 		String cmd = null;
-		if (dispatcher.getInitCommand() != null) {
+		List<Command> initCommands = dispatcher.getInitCommand();
+		if (initCommands != null) {
 			session.putAttribute(Dispatcher.INIT_CMD, true);
 			session.putAttribute(CmdSession.ARG, this.staticArgs);
-			dispatcher.getInitCommand().execute(bin, out, session);
+			for(Command initCmd : initCommands){
+				initCmd.execute(bin, out, session);
+			}
 		}
 
 		while (true) {
@@ -68,7 +71,7 @@ public class CommandRunner {
 					String.class);
 			session.putAttribute(Command.NEXT_CMD, null);
 			if (nextCmd == null) {
-				if (dispatcher.getInitCommand() != null) {
+				if (initCommands != null) {
 					return;
 				}
 				out.print("$ ");
