@@ -103,6 +103,7 @@ public class CommandRunner {
 			Command command = dispatcher.getCommand(cmd);
 			if (command != null) {
 				command.execute(bin, out, session);
+				this.session.logCommand(cmd);
 			} else if ("exit".equals(cmd)) {
 				break;
 			} else if ("?".equals(cmd) || "help".equals(cmd)) {

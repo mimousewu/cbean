@@ -14,7 +14,9 @@
  ****************************************/
 package net.cbean.cmd;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,6 +34,8 @@ public class CmdSession {
 	public static final String STATIC_ARG = "STATIC_ARGUMENT_LINE";
 
 	private Map<String, Object> attributes = new HashMap<String, Object>();
+	
+	private List<String> cmdChain = new ArrayList<String>();
 
 	public Object getAttribute(String name) {
 		return attributes.get(name);
@@ -48,5 +52,13 @@ public class CmdSession {
 
 	public void putAttribute(String name, Object value) {
 		attributes.put(name, value);
+	}
+	
+	public void logCommand(String cmd){
+		this.cmdChain.add(cmd);
+	}
+	
+	public List<String> cmdHistory(){
+		return this.cmdChain;
 	}
 }
